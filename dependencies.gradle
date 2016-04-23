@@ -1,0 +1,40 @@
+ext {
+    applicationId = "com.lpnpcs.yuanhelper"
+    versionCode = 1
+    versionName = "1.0.0"
+
+    minSdkVersion = 15
+    compileSdkVersion = 23
+    targetSdkVersion = 23
+    buildToolsVersion = '23.0.2'
+
+    compiles = [
+            supportAppCompat    : 'com.android.support:appcompat-v7:23.1.1',
+            supportDesgin       : 'com.android.support:design:23.1.1',
+            supportRecyclerView : 'com.android.support:recyclerview-v7:23.1.1',
+            supportCardView     : 'com.android.support:appcompat-v7:23.1.1',
+
+            glide               : 'com.github.bumptech.glide:glide:3.6.1',
+            gson                : 'com.google.code.gson:gson:2.5',
+            dagger              : 'com.google.dagger:dagger:2.0.2',
+
+            eventbus            : 'de.greenrobot:eventbus:3.0.0-beta1',
+            rxandroid           : 'io.reactivex:rxandroid:1.0.1',
+            rxjava              : 'io.reactivex:rxjava:1.0.14',
+
+            okhttpLog           : 'com.squareup.okhttp3:logging-interceptor:3.0.1',
+            retrofit            : 'com.squareup.retrofit2:retrofit:2.0.0',
+            retrofitAdapter     : 'com.squareup.retrofit2:adapter-rxjava:2.0.0',
+
+            systembartint       : 'com.readystatesoftware.systembartint:systembartint:1.0.3',
+
+            viewpagerIndicator  : "com.mcxiaoke.viewpagerindicator:library:2.4.1"
+    ]
+
+    provides = [
+            daggerCompiler: 'com.google.dagger:dagger-compiler:2.0.2',
+            annotation    : 'org.glassfish:javax.annotation:10.0-b28'
+    ]
+
+
+}
