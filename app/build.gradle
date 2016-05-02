@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 def ext = rootProject.ext
 
 def releaseTime() {
@@ -28,6 +29,7 @@ android {
 dependencies {
     def compiles = ext.compiles
     def provides = ext.provides
+    def  apts = ext.apts
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile compiles.supportAppCompat
@@ -38,13 +40,24 @@ dependencies {
     compile compiles.viewpagerIndicator
     compile compiles.retrofit
     compile compiles.retrofitAdapter
+    compile compiles.retrofitgson
     compile compiles.okhttpLog
     compile compiles.rxandroid
     compile compiles.rxjava
-    compile compiles.eventbus
-    compile compiles.dagger
+    compile compiles.rxbinding
+    compile compiles.rxbinding_v4
+    compile compiles.rxbinding_v7
+    compile compiles.rxbinding_design
+    compile compiles.annotation
 
-    provided provides.daggerCompiler
+    //dagger dependencies
+    compile compiles.dagger
+    apt apts.daggerCompiler
     provided provides.annotation
+
+    //butterknife
+    compile compiles.butterknife
+    apt apts.butterknifecompiler
+
 
 }

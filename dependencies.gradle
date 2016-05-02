@@ -3,7 +3,7 @@ ext {
     versionCode = 1
     versionName = "1.0.0"
 
-    minSdkVersion = 15
+    minSdkVersion = 17
     compileSdkVersion = 23
     targetSdkVersion = 23
     buildToolsVersion = '23.0.2'
@@ -16,25 +16,32 @@ ext {
 
             glide               : 'com.github.bumptech.glide:glide:3.6.1',
             gson                : 'com.google.code.gson:gson:2.5',
-            dagger              : 'com.google.dagger:dagger:2.0.2',
+            dagger              : 'com.google.dagger:dagger:2.2',
+            butterknife      : 'com.jakewharton:butterknife:8.0.1',
 
-            eventbus            : 'de.greenrobot:eventbus:3.0.0-beta1',
             rxandroid           : 'io.reactivex:rxandroid:1.0.1',
             rxjava              : 'io.reactivex:rxjava:1.0.14',
-
+            rxbinding  : 'com.jakewharton.rxbinding:rxbinding:0.4.0',
+            rxbinding_v4 : 'com.jakewharton.rxbinding:rxbinding-support-v4:0.4.0',
+            rxbinding_v7 : 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0',
+            rxbinding_design : 'com.jakewharton.rxbinding:rxbinding-design:0.4.0',
             okhttpLog           : 'com.squareup.okhttp3:logging-interceptor:3.0.1',
             retrofit            : 'com.squareup.retrofit2:retrofit:2.0.0',
             retrofitAdapter     : 'com.squareup.retrofit2:adapter-rxjava:2.0.0',
-
+            retrofitgson : 'com.squareup.retrofit2:converter-gson:2.0.0-beta4',
             systembartint       : 'com.readystatesoftware.systembartint:systembartint:1.0.3',
-
+            annotation   :  'com.android.support:support-annotations:22.2.0',
             viewpagerIndicator  : "com.mcxiaoke.viewpagerindicator:library:2.4.1"
     ]
 
     provides = [
-            daggerCompiler: 'com.google.dagger:dagger-compiler:2.0.2',
+
             annotation    : 'org.glassfish:javax.annotation:10.0-b28'
     ]
 
+    apts = [
+            daggerCompiler: 'com.google.dagger:dagger-compiler:2.2',
+            butterknifecompiler: 'com.jakewharton:butterknife-compiler:8.0.1'
+    ]
 
 }
