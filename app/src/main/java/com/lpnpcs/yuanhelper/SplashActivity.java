@@ -1,36 +1,28 @@
 package com.lpnpcs.yuanhelper;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.lpnpcs.yuanhelper.data.net.HttpMethods;
-import com.lpnpcs.yuanhelper.data.net.SplashService;
-import com.lpnpcs.yuanhelper.util.API;
-import com.lpnpcs.yuanhelper.util.LogUtil;
+import com.lpnpcs.yuanhelper.di.component.DaggerSplashComponent;
+import com.lpnpcs.yuanhelper.di.moudle.SplashPresenterMoudle;
+import com.lpnpcs.yuanhelper.presenter.Contract.SplashContract;
+import com.lpnpcs.yuanhelper.ui.activity.MainActivity;
 
-import java.io.IOException;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import rx.Subscriber;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity implements SplashContract.View {
 
-    ImageView splash;
-    private Subscriber subscriber;
+    private ImageView splash;
+    private SplashContract.Presenter mPresenter;
+    private static final int SPLASH_DURATION = 2000;
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
@@ -44,6 +36,8 @@ public class SplashActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         decorView.setSystemUiVisibility(uiOptions);
         splash = (ImageView) findViewById(R.id.splash);
+        mPresenter = DaggerSplashComponent.builder().splashPresenterMoudle(new SplashPresenterMoudle(this)).build().getSplashPresenter();
+
         initSplash();
     }
 
@@ -53,35 +47,53 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void getSplash() {
-        LogUtil.d("lp"," sss");
-
-        subscriber = new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                LogUtil.e("lp",e.getMessage());
-            }
-
-            @Override
-            public void onNext(String s) {
-                LogUtil.d("lp"," sss"+s);
-                Glide.with(getApplicationContext())
-                        .load(s)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .crossFade()
-                        .into(splash);
-            }
-
-        };
-        HttpMethods.getInstance().getSplash(subscriber);
+        mPresenter.getSplash();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void setSplash(String s) {
+        if (!TextUtils.isEmpty(s)) {
+            Glide.with(this)
+                    .load(s)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .animate(R.anim.splash_anim)
+                    .crossFade()
+                    .into(splash);
+        } else {
+            Glide.with(this)
+                    .load(R.drawable.splash)
+                    .crossFade(SPLASH_DURATION)
+                    .animate(R.anim.splash_anim)
+                    .into(splash);
+        }
+
+            startDelayActivity();
+    }
+
+    private void startDelayActivity() {
+
+        splash.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startApp();
+            }
+        },SPLASH_DURATION);
+    }
+
+    private void startApp() {
+        startActivity(new Intent(this, MainActivity.class));
+        overridePendingTransition(android.support.v7.appcompat.R.anim.abc_grow_fade_in_from_bottom, android.support.v7.appcompat.R.anim.abc_shrink_fade_out_from_bottom);
+        finish();
+
+    }
+
+    @Override
+    public void setPresenter(SplashContract.Presenter presenter) {
+
     }
 }
