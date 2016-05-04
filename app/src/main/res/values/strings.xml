@@ -2,4 +2,13 @@
     <string name="app_name">猿助手</string>
     <string name="navigation_drawer_open" translatable="false">close drawer</string>
     <string name="navigation_drawer_close" translatable="false">open drawer</string>
+    <string name="nva_zhihu">知乎</string>
+    <string name="action_settings">设置</string>
+    <string name="action_about">关于</string>
+    <string name="action_exit">退出</string>
+    <string name="nav_github">github</string>
+    <string name="nav_joke">笑话</string>
+    <string name="app">应用</string>
+    <string name="nav_setting">设置</string>
+    <string name="menu_share">分享</string>
 </resources>

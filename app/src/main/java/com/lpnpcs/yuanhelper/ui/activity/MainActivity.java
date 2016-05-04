@@ -1,8 +1,10 @@
 package com.lpnpcs.yuanhelper.ui.activity;
 
+import android.graphics.Color;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
@@ -10,6 +12,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lpnpcs.yuanhelper.R;
 import com.lpnpcs.yuanhelper.base.BaseActivity;
+import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 
 import butterknife.BindView;
 
@@ -30,46 +34,37 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         super.initViews();
         setupDrawer();
         initNavigationView();
+
     }
     private void initNavigationView() {
-        //load headerView's image
+
         Glide.with(this).load(R.drawable.head)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .crossFade()
                 .into((ImageView) navView.getHeaderView(0).findViewById(R.id.headImage));
         navView.setNavigationItemSelectedListener(this);
-      //  boolean isSecretOn = SPUtil.getBoolean(SettingFragment.SECRET_MODE);
-       /* if (isSecretOn) {
-            navView.inflateMenu(R.menu.main_menu_all);
-        } else {
-            navView.inflateMenu(R.menu.main_drawer);
-        }
-        //select the first menu at startup
+        navView.inflateMenu(R.menu.main_menu_all);
+
         Menu menu = navView.getMenu();
         menu.getItem(0).setChecked(true);
 
         menu.getItem(0).setIcon(
                 new IconicsDrawable(this).
-                        icon(GoogleMaterial.Icon.gmd_explore));
+                        icon(MaterialDesignIconic.Icon.gmi_rss));
         menu.getItem(1).setIcon(
                 new IconicsDrawable(this).
-                        icon(GoogleMaterial.Icon.gmd_face)
-                        .color(Color.RED));
-        Menu sub = menu.getItem(isSecretOn ? 3 : 2).getSubMenu();
+                        icon(MaterialDesignIconic.Icon.gmi_github_alt));
+        menu.getItem(2).setIcon(
+                new IconicsDrawable(this).
+                        icon(MaterialDesignIconic.Icon.gmi_mood));
+        Menu sub = menu.getItem(3).getSubMenu();
         sub.getItem(0).setIcon(
                 new IconicsDrawable(this).
-                        icon(GoogleMaterial.Icon.gmd_share)
+                        icon(MaterialDesignIconic.Icon.gmi_settings)
                         .color(Color.DKGRAY));
-        sub.getItem(1).setIcon(
-                new IconicsDrawable(this).
-                        icon(GoogleMaterial.Icon.gmd_settings)
-                        .color(Color.GRAY));
-        if (isSecretOn) {
-            menu.getItem(2).setIcon(new IconicsDrawable(this)
-                    .icon(GoogleMaterial.Icon.gmd_whatshot)
-                    .color(Color.WHITE));
-        }*/
-    }
+
+        }
+
     @Override
     protected void initLayoutId() {
         layoutId = R.layout.activity_main;

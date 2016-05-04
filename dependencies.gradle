@@ -31,7 +31,9 @@ ext {
             retrofitgson : 'com.squareup.retrofit2:converter-gson:2.0.0-beta4',
             systembartint       : 'com.readystatesoftware.systembartint:systembartint:1.0.3',
             annotation   :  'com.android.support:support-annotations:22.2.0',
-            viewpagerIndicator  : "com.mcxiaoke.viewpagerindicator:library:2.4.1"
+            viewpagerIndicator  : "com.mcxiaoke.viewpagerindicator:library:2.4.1",
+            icon : 'com.mikepenz:iconics-core:2.5.11@aar',
+            icon_design : 'com.mikepenz:material-design-iconic-typeface:2.2.0.1@aar'
     ]
 
     provides = [

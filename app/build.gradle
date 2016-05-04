@@ -49,6 +49,8 @@ dependencies {
     compile compiles.rxbinding_v7
     compile compiles.rxbinding_design
     compile compiles.annotation
+    compile compiles.icon
+    compile compiles.icon_design
 
     //dagger dependencies
     compile compiles.dagger
