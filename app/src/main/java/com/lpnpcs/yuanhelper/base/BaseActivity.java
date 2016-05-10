@@ -27,6 +27,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         initLayoutId();
         super.onCreate(savedInstanceState);
         initViews();
+
     }
 
     protected abstract void initLayoutId();
@@ -56,9 +57,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void replaceFragment(Fragment fragment, String tag) {
+    public void replaceFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_main, fragment, tag);
+        transaction.replace(R.id.content_main, fragment);
         transaction.commit();
     }
 

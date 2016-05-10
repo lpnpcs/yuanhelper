@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lpnpcs.yuanhelper.R;
 import com.lpnpcs.yuanhelper.base.BaseActivity;
+import com.lpnpcs.yuanhelper.ui.fragment.ZhiHuFragment;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 
@@ -34,7 +35,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         super.initViews();
         setupDrawer();
         initNavigationView();
-
+        replaceFragment(new ZhiHuFragment());
     }
     private void initNavigationView() {
 

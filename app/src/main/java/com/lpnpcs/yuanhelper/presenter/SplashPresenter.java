@@ -11,7 +11,7 @@ import rx.Subscriber;
 /**
  * Created by lpnpcs.
  * email:lpnpcs@gmail.com
- * description：
+ * description：Presneter for SplashView
  */
 public class SplashPresenter implements SplashContract.Presenter {
         private final SplashContract.View mSplashView;
