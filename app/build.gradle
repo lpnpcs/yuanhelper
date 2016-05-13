@@ -48,6 +48,7 @@ dependencies {
     compile compiles.rxbinding_v4
     compile compiles.rxbinding_v7
     compile compiles.rxbinding_design
+    compile compiles.banner
     compile compiles.annotation
     compile compiles.icon
     compile compiles.icon_design

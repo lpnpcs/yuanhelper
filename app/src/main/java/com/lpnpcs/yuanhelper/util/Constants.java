@@ -7,4 +7,5 @@ package com.lpnpcs.yuanhelper.util;
  */
 public class Constants {
     public static final String POSITION = "position";
+    public static final String DATE = "date";
 }

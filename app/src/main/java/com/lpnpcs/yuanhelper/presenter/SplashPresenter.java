@@ -15,7 +15,7 @@ import rx.Subscriber;
  */
 public class SplashPresenter implements SplashContract.Presenter {
         private final SplashContract.View mSplashView;
-        private Subscriber subscriber;
+        private Subscriber<String> subscriber;
 
     @Inject
     SplashPresenter(SplashContract.View view){
@@ -39,6 +39,7 @@ public class SplashPresenter implements SplashContract.Presenter {
 
             @Override
             public void onNext(String s) {
+
                mSplashView.setSplash(s);
             }
 

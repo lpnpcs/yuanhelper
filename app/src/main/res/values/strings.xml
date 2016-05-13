@@ -2,6 +2,8 @@
     <string name="app_name">猿助手</string>
     <string name="navigation_drawer_open" translatable="false">close drawer</string>
     <string name="navigation_drawer_close" translatable="false">open drawer</string>
+    <string name="share_title" translatable="false">shared_title</string>
+    <string name="shared_img" translatable="false">shared_img</string>
     <string name="nva_zhihu">知乎</string>
     <string name="action_settings">设置</string>
     <string name="action_about">关于</string>
@@ -11,4 +13,7 @@
     <string name="app">应用</string>
     <string name="nav_setting">设置</string>
     <string name="menu_share">分享</string>
+    <string name="hottest">今日热闻</string>
+    <string name="loading">正在加载。。。</string>
+    <string name="load_fail">加载失败。。。。</string>
 </resources>

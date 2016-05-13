@@ -2,6 +2,7 @@ package com.lpnpcs.yuanhelper.presenter.Contract;
 
 import com.lpnpcs.yuanhelper.base.BasePresenter;
 import com.lpnpcs.yuanhelper.base.BaseView;
+import com.lpnpcs.yuanhelper.data.entity.ZhiHuEntity;
 
 /**
  * Created by lpnpcs.
@@ -10,12 +11,17 @@ import com.lpnpcs.yuanhelper.base.BaseView;
  */
 public interface ZhiHuContract {
     interface View extends BaseView<Presenter> {
-            void  addNews();
+        void  addNews(ZhiHuEntity zhiHuEntity);
+        void addBeforeNews(ZhiHuEntity zhiHuEntity);
+        void showProgress();
+        void hideProgress();
+        void loadFailed(String msg);
 
     }
 
     interface Presenter extends BasePresenter {
         void  loadNews();
+        void loadBefore();
     }
 
 }

@@ -1,6 +1,7 @@
 package com.lpnpcs.yuanhelper.data.net;
 
 import com.lpnpcs.yuanhelper.data.entity.SplashEntity;
+import com.lpnpcs.yuanhelper.data.entity.ZhiHuEntity;
 import com.lpnpcs.yuanhelper.util.API;
 import com.lpnpcs.yuanhelper.util.LogUtil;
 
@@ -27,6 +28,7 @@ public class HttpMethods {
 
     private Retrofit retrofit;
     private SplashService splashService;
+    private ZhiHuService zhiHuService;
 
     //构造方法私有
     private HttpMethods() {
@@ -43,6 +45,7 @@ public class HttpMethods {
 
 
         splashService = retrofit.create(SplashService.class);
+        zhiHuService = retrofit.create(ZhiHuService.class);
     }
 
     //在访问HttpMethods时创建单例
@@ -76,5 +79,18 @@ public class HttpMethods {
                })
                .subscribe(subscriber);
    }
+
+    public  void  getZhiHuLatest(Subscriber<ZhiHuEntity> subscriber){
+        zhiHuService.getZhiHuLatest()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+    public void getZhiHuBefore(Subscriber<ZhiHuEntity> subscriber,String date){
+        zhiHuService.getZhiHubefore(date)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
 }
 

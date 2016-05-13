@@ -21,6 +21,7 @@
         android:id="@+id/news_item"
         android:layout_width="match_parent"
         android:layout_height="92dp"
+        android:background="@drawable/rippleselector"
         android:orientation="horizontal">
 
         <ImageView
@@ -30,7 +31,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_menu_gallery"
+            android:src="@android:drawable/ic_menu_gallery"
             android:transitionName="@string/shared_img"/>
 
         <TextView
