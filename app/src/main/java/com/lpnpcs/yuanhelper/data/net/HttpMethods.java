@@ -1,6 +1,7 @@
 package com.lpnpcs.yuanhelper.data.net;
 
 import com.lpnpcs.yuanhelper.data.entity.SplashEntity;
+import com.lpnpcs.yuanhelper.data.entity.ZhiHuDetailEntity;
 import com.lpnpcs.yuanhelper.data.entity.ZhiHuEntity;
 import com.lpnpcs.yuanhelper.util.API;
 import com.lpnpcs.yuanhelper.util.LogUtil;
@@ -58,7 +59,10 @@ public class HttpMethods {
         return SingletonHolder.INSTANCE;
     }
 
-
+    /**
+     * 获取首页图标
+     * @param subscriber
+     */
    public void  getSplash(Subscriber<String> subscriber){
        LogUtil.d("lp"," sss11");
        splashService.getSplash().subscribeOn(Schedulers.io())
@@ -80,17 +84,41 @@ public class HttpMethods {
                .subscribe(subscriber);
    }
 
+    /**
+     * 获取知乎最近新闻
+     * @param subscriber
+     */
     public  void  getZhiHuLatest(Subscriber<ZhiHuEntity> subscriber){
         zhiHuService.getZhiHuLatest()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
+
+    /**
+     * 获取知乎历史新闻
+     * @param subscriber
+     * @param date
+     */
     public void getZhiHuBefore(Subscriber<ZhiHuEntity> subscriber,String date){
-        zhiHuService.getZhiHubefore(date)
+        zhiHuService.getZhiHuBefore(date)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
+
+    /**
+     * 获取知乎详情
+     * @param subscriber
+     * @param id
+     */
+    public void getZhiHuDetail(Subscriber<ZhiHuDetailEntity> subscriber,String id){
+        zhiHuService.getZhiHuDetail(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+
+    }
+
 }
 

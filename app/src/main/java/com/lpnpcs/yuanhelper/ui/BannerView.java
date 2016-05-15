@@ -45,6 +45,7 @@ public class BannerView implements Holder<ZhiHuEntity.TopStoriesBean>{
             public void onClick(View v) {
                 Intent intent = new Intent(context, ZhiHuDetailActivity.class);
                 intent.putExtra("id", entity.getId());
+                intent.putExtra("title",entity.getTitle());
                 ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((MainActivity) context,
                         imageView, context.getString(R.string.shared_img));
                 ActivityCompat.startActivity((MainActivity) context, intent, optionsCompat.toBundle());

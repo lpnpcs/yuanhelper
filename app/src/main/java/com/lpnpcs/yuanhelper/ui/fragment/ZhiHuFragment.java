@@ -14,7 +14,7 @@ import com.lpnpcs.yuanhelper.R;
 import com.lpnpcs.yuanhelper.base.BaseActivity;
 import com.lpnpcs.yuanhelper.data.entity.ZhiHuEntity;
 import com.lpnpcs.yuanhelper.di.component.DaggerZhiHuFragmetComponent;
-import com.lpnpcs.yuanhelper.di.moudle.ZhiHuPresenterMoudle;
+import com.lpnpcs.yuanhelper.di.module.ZhiHuPresenterModule;
 import com.lpnpcs.yuanhelper.presenter.Contract.ZhiHuContract;
 import com.lpnpcs.yuanhelper.ui.OnListFragmentInteract;
 import com.lpnpcs.yuanhelper.ui.activity.ZhiHuDetailActivity;
@@ -41,7 +41,7 @@ public class ZhiHuFragment extends  RecyclerFragment  implements ZhiHuContract.V
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter = DaggerZhiHuFragmetComponent.builder().zhiHuPresenterMoudle(new ZhiHuPresenterMoudle(this)).build().getZhiHuPresenter();
+        mPresenter = DaggerZhiHuFragmetComponent.builder().zhiHuPresenterModule(new ZhiHuPresenterModule(this)).build().getZhiHuPresenter();
         LogUtil.d("presenter"+mPresenter);
     }
     @Override
@@ -131,6 +131,7 @@ public class ZhiHuFragment extends  RecyclerFragment  implements ZhiHuContract.V
             ZhiHuListAdapter.ViewHolder holder = (ZhiHuListAdapter.ViewHolder) viewHolder;
             Intent intent = new Intent(getActivity(), ZhiHuDetailActivity.class);
             intent.putExtra("id", holder.zhihuStory.getId());
+            intent.putExtra("title",holder.zhihuStory.getTitle());
             ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
                     holder.mImage, getString(R.string.shared_img));
             ActivityCompat.startActivity(getActivity(), intent, optionsCompat.toBundle());

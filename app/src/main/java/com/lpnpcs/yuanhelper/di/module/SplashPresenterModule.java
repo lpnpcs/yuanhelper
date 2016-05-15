@@ -1,4 +1,4 @@
-package com.lpnpcs.yuanhelper.di.moudle;
+package com.lpnpcs.yuanhelper.di.module;
 
 import com.lpnpcs.yuanhelper.presenter.Contract.SplashContract;
 
@@ -12,10 +12,10 @@ import dagger.Provides;
  */
 
 @Module
-public class SplashPresenterMoudle {
+public class SplashPresenterModule {
     private final SplashContract.View mView;
 
-    public SplashPresenterMoudle(SplashContract.View view) {
+    public SplashPresenterModule(SplashContract.View view) {
         mView = view;
     }
     @Provides

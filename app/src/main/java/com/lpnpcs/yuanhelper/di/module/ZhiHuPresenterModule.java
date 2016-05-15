@@ -1,4 +1,4 @@
-package com.lpnpcs.yuanhelper.di.moudle;
+package com.lpnpcs.yuanhelper.di.module;
 
 import com.lpnpcs.yuanhelper.presenter.Contract.ZhiHuContract;
 
@@ -11,9 +11,9 @@ import dagger.Provides;
  * description：
  */
 @Module
-public class ZhiHuPresenterMoudle {
+public class ZhiHuPresenterModule {
     private final ZhiHuContract.View mView;
-    public ZhiHuPresenterMoudle(ZhiHuContract.View view){
+    public ZhiHuPresenterModule(ZhiHuContract.View view){
         mView = view;
     }
 

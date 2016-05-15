@@ -1,4 +1,4 @@
-package com.lpnpcs.yuanhelper.di.moudle;
+package com.lpnpcs.yuanhelper.di.module;
 
 import android.content.Context;
 
@@ -10,10 +10,10 @@ import dagger.Provides;
  * 全局moudle
  */
 @Module
-public class ApplicationMoudle {
+public class ApplicationModule {
     private final Context mContext;
 
-    ApplicationMoudle(Context context) {
+    ApplicationModule(Context context) {
         mContext = context;
     }
 

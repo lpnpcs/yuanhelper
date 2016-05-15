@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lpnpcs.yuanhelper.di.component.DaggerSplashComponent;
-import com.lpnpcs.yuanhelper.di.moudle.SplashPresenterMoudle;
+import com.lpnpcs.yuanhelper.di.module.SplashPresenterModule;
 import com.lpnpcs.yuanhelper.presenter.Contract.SplashContract;
 import com.lpnpcs.yuanhelper.ui.activity.MainActivity;
 
@@ -36,7 +36,7 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         decorView.setSystemUiVisibility(uiOptions);
         splash = (ImageView) findViewById(R.id.splash);
-        mPresenter = DaggerSplashComponent.builder().splashPresenterMoudle(new SplashPresenterMoudle(this)).build().getSplashPresenter();
+        mPresenter = DaggerSplashComponent.builder().splashPresenterModule(new SplashPresenterModule(this)).build().getSplashPresenter();
 
         initSplash();
     }

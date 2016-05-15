@@ -82,7 +82,7 @@ public class ZhiHuEntity {
                     '}';
         }
 
-        private int id;
+        private String id;
         private String ga_prefix;
         private String title;
         private List<String> images;
@@ -95,11 +95,11 @@ public class ZhiHuEntity {
             this.type = type;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
@@ -131,7 +131,7 @@ public class ZhiHuEntity {
     public static class TopStoriesBean {
         private String image;
         private int type;
-        private int id;
+        private String id;
         private String ga_prefix;
         private String title;
 
@@ -147,17 +147,20 @@ public class ZhiHuEntity {
             return type;
         }
 
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getId() {
+            return id;
+
+        }
+
         public void setType(int type) {
             this.type = type;
         }
 
-        public int getId() {
-            return id;
-        }
 
-        public void setId(int id) {
-            this.id = id;
-        }
 
         public String getGa_prefix() {
             return ga_prefix;
