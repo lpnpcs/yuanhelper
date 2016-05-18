@@ -14,6 +14,7 @@ import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lpnpcs.yuanhelper.R;
+import com.lpnpcs.yuanhelper.base.YuanApplication;
 import com.lpnpcs.yuanhelper.data.entity.ZhiHuEntity;
 import com.lpnpcs.yuanhelper.ui.BannerView;
 import com.lpnpcs.yuanhelper.ui.OnListFragmentInteract;
@@ -88,7 +89,7 @@ public class ZhiHuListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Context context = holder.itemView.getContext();
+        Context context = YuanApplication.context;
         textGrey = ContextCompat.getColor(context, R.color.darker_gray);
         textDark = ContextCompat.getColor(context, android.support.design.R.color.abc_primary_text_material_light);
         if (holder instanceof ViewHolder) {

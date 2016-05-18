@@ -17,6 +17,7 @@ import com.lpnpcs.yuanhelper.di.component.DaggerZhiHuFragmetComponent;
 import com.lpnpcs.yuanhelper.di.module.ZhiHuPresenterModule;
 import com.lpnpcs.yuanhelper.presenter.Contract.ZhiHuContract;
 import com.lpnpcs.yuanhelper.ui.OnListFragmentInteract;
+import com.lpnpcs.yuanhelper.ui.activity.MainActivity;
 import com.lpnpcs.yuanhelper.ui.activity.ZhiHuDetailActivity;
 import com.lpnpcs.yuanhelper.ui.adpter.ZhiHuListAdapter;
 import com.lpnpcs.yuanhelper.util.Constants;
@@ -37,6 +38,15 @@ public class ZhiHuFragment extends  RecyclerFragment  implements ZhiHuContract.V
     private ZhiHuListAdapter adapter;
     private ConvenientBanner banner;
     private BaseActivity mActivity;
+
+    public static ZhiHuFragment getInstance(){
+        return  ZhiHuSingletonHolder.INSTANCE;
+    }
+    private static class ZhiHuSingletonHolder{
+        private static final ZhiHuFragment INSTANCE = new ZhiHuFragment();
+    }
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -122,7 +132,7 @@ public class ZhiHuFragment extends  RecyclerFragment  implements ZhiHuContract.V
 
     @Override
     public void loadFailed(String msg) {
-        SnackUtil.showSnack(getActivity().getCurrentFocus(), R.string.load_fail);
+        SnackUtil.showSnack(((MainActivity) getActivity()).getDrawerLayout(), R.string.load_fail);
     }
 
     @Override

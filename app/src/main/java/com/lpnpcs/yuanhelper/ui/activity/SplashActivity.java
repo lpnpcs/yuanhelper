@@ -1,4 +1,4 @@
-package com.lpnpcs.yuanhelper;
+package com.lpnpcs.yuanhelper.ui.activity;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.lpnpcs.yuanhelper.R;
 import com.lpnpcs.yuanhelper.di.component.DaggerSplashComponent;
 import com.lpnpcs.yuanhelper.di.module.SplashPresenterModule;
 import com.lpnpcs.yuanhelper.presenter.Contract.SplashContract;

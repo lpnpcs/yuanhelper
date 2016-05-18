@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:windowSoftInputMode="adjustResize">
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
