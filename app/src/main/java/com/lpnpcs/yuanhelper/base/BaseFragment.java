@@ -27,7 +27,6 @@ public abstract class BaseFragment extends Fragment {
             unbinder = ButterKnife.bind(this, rootView);
             initViews();
         }
-        AlwaysInit();
         return rootView;
     }
 
@@ -56,9 +55,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void initLayoutId();
 
-    protected void AlwaysInit() {
-        ButterKnife.bind(this, rootView);
-    }
+
 
     protected abstract void initViews();
 
