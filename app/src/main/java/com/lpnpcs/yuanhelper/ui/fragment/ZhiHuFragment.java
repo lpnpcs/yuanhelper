@@ -39,15 +39,6 @@ public class ZhiHuFragment extends  RecyclerFragment  implements ZhiHuContract.V
     private ConvenientBanner banner;
     private BaseActivity mActivity;
 
-    public static ZhiHuFragment getInstance(){
-        return  ZhiHuSingletonHolder.INSTANCE;
-    }
-    private static class ZhiHuSingletonHolder{
-        private static final ZhiHuFragment INSTANCE = new ZhiHuFragment();
-    }
-
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -9,6 +9,9 @@
             android:id="@+id/nav_github"
             android:title="@string/nav_github"/>
         <item
+            android:id="@+id/nav_csdn"
+            android:title="@string/nav_csdn"/>
+        <item
             android:id="@+id/nav_joke"
         android:title="@string/nav_joke"/>
 

@@ -17,6 +17,7 @@ import com.lpnpcs.yuanhelper.R;
 import com.lpnpcs.yuanhelper.base.BaseActivity;
 import com.lpnpcs.yuanhelper.ui.fragment.WebViewFragment;
 import com.lpnpcs.yuanhelper.ui.fragment.ZhiHuFragment;
+import com.lpnpcs.yuanhelper.util.API;
 import com.lpnpcs.yuanhelper.util.SnackUtil;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
@@ -42,7 +43,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         super.initViews();
         setupDrawer();
         initNavigationView();
-        replaceFragment(ZhiHuFragment.getInstance());
+        replaceFragment(new ZhiHuFragment());
     }
 
     private void initNavigationView() {
@@ -65,8 +66,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                         icon(MaterialDesignIconic.Icon.gmi_github_alt));
         menu.getItem(2).setIcon(
                 new IconicsDrawable(this).
+                        icon(MaterialDesignIconic.Icon.gmi_globe));
+        menu.getItem(3).setIcon(
+                new IconicsDrawable(this).
                         icon(MaterialDesignIconic.Icon.gmi_mood));
-        Menu sub = menu.getItem(3).getSubMenu();
+        Menu sub = menu.getItem(4).getSubMenu();
         sub.getItem(0).setIcon(
                 new IconicsDrawable(this).
                         icon(MaterialDesignIconic.Icon.gmi_settings)
@@ -147,9 +151,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_zhihu) {
-            replaceFragment(ZhiHuFragment.getInstance());
+            replaceFragment(new ZhiHuFragment());
         } else if (id == R.id.nav_github) {
-            replaceFragment(WebViewFragment.getInstance());
+            replaceFragment(new WebViewFragment(API.GITHUB));
+        } else if (id == R.id.nav_csdn) {
+            replaceFragment(new WebViewFragment(API.CSDN));
         } else if (id == R.id.nav_joke) {
 
         } else if (id == R.id.nav_setting) {
