@@ -21,7 +21,6 @@ import com.lpnpcs.yuanhelper.ui.activity.MainActivity;
 import com.lpnpcs.yuanhelper.ui.activity.ZhiHuDetailActivity;
 import com.lpnpcs.yuanhelper.ui.adpter.ZhiHuListAdapter;
 import com.lpnpcs.yuanhelper.util.Constants;
-import com.lpnpcs.yuanhelper.util.LogUtil;
 import com.lpnpcs.yuanhelper.util.SettingUtil;
 import com.lpnpcs.yuanhelper.util.SnackUtil;
 
@@ -43,7 +42,7 @@ public class ZhiHuFragment extends  RecyclerFragment  implements ZhiHuContract.V
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter = DaggerZhiHuFragmetComponent.builder().zhiHuPresenterModule(new ZhiHuPresenterModule(this)).build().getZhiHuPresenter();
-        LogUtil.d("presenter"+mPresenter);
+        //LogUtil.d("presenter"+mPresenter);
     }
     @Override
     protected void initViews() {

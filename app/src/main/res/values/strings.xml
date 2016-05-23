@@ -12,6 +12,8 @@
     <string name="nav_csdn">CSDN博客</string>
     <string name="nav_joke">笑话</string>
     <string name="app">应用</string>
+    <string name="joke">笑话</string>
+    <string name="joke_image">趣图</string>
     <string name="nav_setting">设置</string>
     <string name="menu_share">分享</string>
     <string name="hottest">今日热闻</string>

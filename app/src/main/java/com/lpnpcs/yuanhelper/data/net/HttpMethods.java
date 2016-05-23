@@ -1,5 +1,7 @@
 package com.lpnpcs.yuanhelper.data.net;
 
+import com.lpnpcs.yuanhelper.data.entity.ImageEntity;
+import com.lpnpcs.yuanhelper.data.entity.JokeEntity;
 import com.lpnpcs.yuanhelper.data.entity.SplashEntity;
 import com.lpnpcs.yuanhelper.data.entity.ZhiHuDetailEntity;
 import com.lpnpcs.yuanhelper.data.entity.ZhiHuEntity;
@@ -30,6 +32,7 @@ public class HttpMethods {
     private Retrofit retrofit;
     private SplashService splashService;
     private ZhiHuService zhiHuService;
+    private  JokeService jokeService;
 
     //构造方法私有
     private HttpMethods() {
@@ -47,6 +50,7 @@ public class HttpMethods {
 
         splashService = retrofit.create(SplashService.class);
         zhiHuService = retrofit.create(ZhiHuService.class);
+        jokeService = retrofit.create(JokeService.class);
     }
 
     //在访问HttpMethods时创建单例
@@ -119,6 +123,31 @@ public class HttpMethods {
                 .subscribe(subscriber);
 
     }
+
+    /**
+     * 获取笑话
+     * @param subscriber
+     */
+    public void getJoke(Subscriber<JokeEntity> subscriber){
+        jokeService.getJoke()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获取搞笑图片
+     * @param subscriber
+     */
+    public  void getJokeImage(Subscriber<ImageEntity> subscriber){
+        jokeService.getJokeImage()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+
+
 
 }
 

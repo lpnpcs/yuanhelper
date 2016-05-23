@@ -10,5 +10,6 @@ public  class API {
    // public static final String SPLASH = "http://news-at.zhihu.com/api/4/start-image/1080*1920";
     public static  final  String GITHUB = "https://github.com/";
     public static final String CSDN = "http://m.blog.csdn.net/";
+    public static  final  String JOKE_BASE = "http://api.laifudao.com/open/";
 
 }
