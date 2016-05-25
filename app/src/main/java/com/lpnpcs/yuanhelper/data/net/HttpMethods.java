@@ -6,8 +6,8 @@ import com.lpnpcs.yuanhelper.data.entity.SplashEntity;
 import com.lpnpcs.yuanhelper.data.entity.ZhiHuDetailEntity;
 import com.lpnpcs.yuanhelper.data.entity.ZhiHuEntity;
 import com.lpnpcs.yuanhelper.util.API;
-import com.lpnpcs.yuanhelper.util.LogUtil;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -26,10 +26,12 @@ import rx.schedulers.Schedulers;
  */
 public class HttpMethods {
     public static final String BASE_ZHI_URL = API.ZhiBase;
+    public static final String BASE_JOKE = API.JOKE_BASE;
 
     private static final int DEFAULT_TIMEOUT = 5;
 
     private Retrofit retrofit;
+    private Retrofit retrofit_joke;
     private SplashService splashService;
     private ZhiHuService zhiHuService;
     private  JokeService jokeService;
@@ -46,11 +48,16 @@ public class HttpMethods {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl(BASE_ZHI_URL)
                 .build();
-
+        retrofit_joke = new Retrofit.Builder()
+                .client(httpClientBuilder.build())
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .baseUrl(BASE_JOKE)
+                .build();
 
         splashService = retrofit.create(SplashService.class);
         zhiHuService = retrofit.create(ZhiHuService.class);
-        jokeService = retrofit.create(JokeService.class);
+        jokeService = retrofit_joke.create(JokeService.class);
     }
 
     //在访问HttpMethods时创建单例
@@ -68,7 +75,6 @@ public class HttpMethods {
      * @param subscriber
      */
    public void  getSplash(Subscriber<String> subscriber){
-       LogUtil.d("lp"," sss11");
        splashService.getSplash().subscribeOn(Schedulers.io())
                .observeOn(AndroidSchedulers.mainThread())
                .map(new Func1<SplashEntity, String>() {
@@ -76,8 +82,6 @@ public class HttpMethods {
                    public String call(SplashEntity entity) {
 
                        try {
-                           LogUtil.d("lp"," s"+entity.getImg());
-
                            return entity.getImg();
                        } catch (Exception e) {
                            e.printStackTrace();
@@ -128,7 +132,7 @@ public class HttpMethods {
      * 获取笑话
      * @param subscriber
      */
-    public void getJoke(Subscriber<JokeEntity> subscriber){
+    public void getJoke(Subscriber<ArrayList<JokeEntity>> subscriber){
         jokeService.getJoke()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -139,7 +143,7 @@ public class HttpMethods {
      * 获取搞笑图片
      * @param subscriber
      */
-    public  void getJokeImage(Subscriber<ImageEntity> subscriber){
+    public  void getJokeImage(Subscriber<ArrayList<ImageEntity>> subscriber){
         jokeService.getJokeImage()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

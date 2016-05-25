@@ -11,12 +11,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lpnpcs.yuanhelper.R;
-import com.lpnpcs.yuanhelper.base.BaseActivity;
 import com.lpnpcs.yuanhelper.data.entity.ZhiHuDetailEntity;
 import com.lpnpcs.yuanhelper.di.component.DaggerZhiHuDetailComponent;
 import com.lpnpcs.yuanhelper.di.module.ZhiHuDetailPresenterModule;
@@ -24,47 +22,46 @@ import com.lpnpcs.yuanhelper.presenter.Contract.ZhiHuDetailContract;
 import com.lpnpcs.yuanhelper.presenter.ZhiHuDetailPresenter;
 import com.lpnpcs.yuanhelper.util.Share;
 import com.lpnpcs.yuanhelper.util.SnackUtil;
+import com.lpnpcs.yuanhelper.widget.loadview.ShapeLoadingDialog;
+import com.lpnpcs.yuanhelper.widget.swipeback.SwipeBackActivity;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by lpnpcs.
  * email:lpnpcs@gmail.com
  * description：知乎详情页面
  */
-public class ZhiHuDetailActivity  extends BaseActivity implements ZhiHuDetailContract.View {
+public class ZhiHuDetailActivity  extends SwipeBackActivity implements ZhiHuDetailContract.View {
     @BindView(R.id.detail_img)
     ImageView detailImg;
     @BindView(R.id.toolbar_layout)
     CollapsingToolbarLayout toolbarLayout;
     @BindView(R.id.fab)
     FloatingActionButton fab;
-    @BindView(R.id.progress)
-    ProgressBar progress;
     @BindView(R.id.web_container)
     FrameLayout webContainer;
+    private ShapeLoadingDialog shapeLoadingDialog;
     private WebView webView;
     private ZhiHuDetailPresenter zhiHuDetailPresenter;
     private  ZhiHuDetailEntity zhiHuDetail;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         zhiHuDetailPresenter = DaggerZhiHuDetailComponent.builder()
                 .zhiHuDetailPresenterModule(new ZhiHuDetailPresenterModule(this))
                 .build().getZhiHuDetailPresenter();
-        super.onCreate(savedInstanceState);
+        initViews();
     }
 
-    @Override
-    protected void initLayoutId() {
-        layoutId = R.layout.activity_news_detail;
-    }
-
-    @Override
     protected void initViews() {
-        super.initViews();
+        setContentView(R.layout.activity_news_detail);
+        ButterKnife.bind(this);
         String id = getIntent().getStringExtra("id");
         String title = getIntent().getStringExtra("title");
+        shapeLoadingDialog = new ShapeLoadingDialog(this);
+        shapeLoadingDialog.setLoadingText("加载中...");
         toolbarLayout.setTitle(title);
         initWebView();
         zhiHuDetailPresenter.loadNewsDetail(id);
@@ -124,7 +121,7 @@ public class ZhiHuDetailActivity  extends BaseActivity implements ZhiHuDetailCon
 
     @Override
     public void showProgress() {
-        progress.setVisibility(View.VISIBLE);
+        shapeLoadingDialog.show();
     }
 
     @Override
@@ -151,7 +148,7 @@ public class ZhiHuDetailActivity  extends BaseActivity implements ZhiHuDetailCon
     }
     @Override
     public void hideProgress() {
-        progress.setVisibility(View.GONE);
+       shapeLoadingDialog.dismiss();
     }
 
     @Override

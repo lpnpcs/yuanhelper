@@ -23,6 +23,7 @@ import butterknife.BindView;
  * email:lpnpcs@gmail.com
  * description：
  */
+@SuppressLint("ValidFragment")
 public class WebViewFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefresh;
@@ -32,6 +33,7 @@ public class WebViewFragment extends BaseFragment implements SwipeRefreshLayout.
     ProgressBar progressBar;
     private String url;
 
+    @SuppressLint("ValidFragment")
     public WebViewFragment(String url) {
         this.url = url;
     }

@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lpnpcs.yuanhelper.widget.loadview.ShapeLoadingDialog;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -17,13 +19,15 @@ public abstract class BaseFragment extends Fragment {
     protected View rootView;
     protected int layoutId;
     private Unbinder unbinder;
-
+    protected ShapeLoadingDialog shapeLoadingDialog;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (rootView == null) {
             initLayoutId();
             rootView = inflater.inflate(layoutId, container, false);
+            shapeLoadingDialog=new ShapeLoadingDialog(getActivity());
+            shapeLoadingDialog.setLoadingText("加载中...");
             unbinder = ButterKnife.bind(this, rootView);
             initViews();
         }

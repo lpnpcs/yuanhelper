@@ -26,6 +26,7 @@ public class JokeFragment extends BaseFragment {
      TabLayout mTablayout;
     @BindView(R.id.viewpager)
      ViewPager mViewPager;
+
     @Override
     protected void initLayoutId() {
         layoutId = R.layout.fragment_joketab;

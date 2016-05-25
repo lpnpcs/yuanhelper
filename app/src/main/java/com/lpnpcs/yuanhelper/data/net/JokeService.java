@@ -3,6 +3,8 @@ package com.lpnpcs.yuanhelper.data.net;
 import com.lpnpcs.yuanhelper.data.entity.ImageEntity;
 import com.lpnpcs.yuanhelper.data.entity.JokeEntity;
 
+import java.util.ArrayList;
+
 import retrofit2.http.GET;
 import rx.Observable;
 
@@ -13,9 +15,9 @@ import rx.Observable;
  */
 public interface JokeService {
     @GET("xiaohua.json")
-    Observable<JokeEntity> getJoke();
+    Observable<ArrayList<JokeEntity>> getJoke();
 
     @GET("tupian.json")
-    Observable<ImageEntity> getJokeImage();
+    Observable<ArrayList<ImageEntity>> getJokeImage();
 
 }

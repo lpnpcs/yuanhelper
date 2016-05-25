@@ -2,7 +2,10 @@ package com.lpnpcs.yuanhelper.presenter.Contract;
 
 import com.lpnpcs.yuanhelper.base.BasePresenter;
 import com.lpnpcs.yuanhelper.base.BaseView;
-import com.lpnpcs.yuanhelper.data.entity.IJEntity;
+import com.lpnpcs.yuanhelper.data.entity.ImageEntity;
+import com.lpnpcs.yuanhelper.data.entity.JokeEntity;
+
+import java.util.ArrayList;
 
 /**
  * Created by lpnpcs.
@@ -11,7 +14,8 @@ import com.lpnpcs.yuanhelper.data.entity.IJEntity;
  */
 public interface JokeContract {
     interface View extends BaseView<Presenter> {
-        void  addJoke(IJEntity data);
+        void  addJoke(ArrayList<JokeEntity> data);
+        void  addImage(ArrayList<ImageEntity> data);
         void showProgress();
         void hideProgress();
         void loadFailed(String msg);

@@ -113,11 +113,13 @@ public class ZhiHuFragment extends  RecyclerFragment  implements ZhiHuContract.V
     @Override
     public void showProgress() {
         showProgress(true);
+        shapeLoadingDialog.show();
     }
 
     @Override
     public void hideProgress() {
         showProgress(false);
+        shapeLoadingDialog.dismiss();
     }
 
     @Override

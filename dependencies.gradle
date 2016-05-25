@@ -9,41 +9,41 @@ ext {
     buildToolsVersion = '23.0.2'
 
     compiles = [
-            supportAppCompat    : 'com.android.support:appcompat-v7:23.1.1',
-            supportDesgin       : 'com.android.support:design:23.1.1',
-            supportRecyclerView : 'com.android.support:recyclerview-v7:23.1.1',
-            supportCardView     : 'com.android.support:cardview-v7:23.1.1',
+            supportAppCompat   : 'com.android.support:appcompat-v7:23.1.1',
+            supportDesgin      : 'com.android.support:design:23.1.1',
+            supportRecyclerView: 'com.android.support:recyclerview-v7:23.1.1',
+            supportCardView    : 'com.android.support:cardview-v7:23.1.1',
 
-            glide               : 'com.github.bumptech.glide:glide:3.6.1',
-            banner            : 'com.bigkoo:convenientbanner:2.0.5',
-            gson                : 'com.google.code.gson:gson:2.5',
-            dagger              : 'com.google.dagger:dagger:2.2',
-            butterknife      : 'com.jakewharton:butterknife:8.0.1',
+            glide              : 'com.github.bumptech.glide:glide:3.6.1',
+            banner             : 'com.bigkoo:convenientbanner:2.0.5',
+            gson               : 'com.google.code.gson:gson:2.5',
+            dagger             : 'com.google.dagger:dagger:2.2',
+            butterknife        : 'com.jakewharton:butterknife:8.0.1',
 
-            rxandroid           : 'io.reactivex:rxandroid:1.0.1',
-            rxjava              : 'io.reactivex:rxjava:1.0.14',
-            rxbinding  : 'com.jakewharton.rxbinding:rxbinding:0.4.0',
-            rxbinding_v4 : 'com.jakewharton.rxbinding:rxbinding-support-v4:0.4.0',
-            rxbinding_v7 : 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0',
-            rxbinding_design : 'com.jakewharton.rxbinding:rxbinding-design:0.4.0',
-            okhttpLog           : 'com.squareup.okhttp3:logging-interceptor:3.0.1',
-            retrofit            : 'com.squareup.retrofit2:retrofit:2.0.0',
-            retrofitAdapter     : 'com.squareup.retrofit2:adapter-rxjava:2.0.0',
-            retrofitgson : 'com.squareup.retrofit2:converter-gson:2.0.0-beta4',
-            systembartint       : 'com.readystatesoftware.systembartint:systembartint:1.0.3',
-            annotation   :  'com.android.support:support-annotations:22.2.0',
-            viewpagerIndicator  : "com.mcxiaoke.viewpagerindicator:library:2.4.1",
-            icon : 'com.mikepenz:iconics-core:2.5.11@aar',
-            icon_design : 'com.mikepenz:material-design-iconic-typeface:2.2.0.1@aar'
+            rxandroid          : 'io.reactivex:rxandroid:1.0.1',
+            rxjava             : 'io.reactivex:rxjava:1.0.14',
+            rxbinding          : 'com.jakewharton.rxbinding:rxbinding:0.4.0',
+            rxbinding_v4       : 'com.jakewharton.rxbinding:rxbinding-support-v4:0.4.0',
+            rxbinding_v7       : 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0',
+            rxbinding_design   : 'com.jakewharton.rxbinding:rxbinding-design:0.4.0',
+            okhttpLog          : 'com.squareup.okhttp3:logging-interceptor:3.0.1',
+            retrofit           : 'com.squareup.retrofit2:retrofit:2.0.0',
+            retrofitAdapter    : 'com.squareup.retrofit2:adapter-rxjava:2.0.0',
+            retrofitgson       : 'com.squareup.retrofit2:converter-gson:2.0.0-beta4',
+            systembartint      : 'com.readystatesoftware.systembartint:systembartint:1.0.3',
+            annotation         : 'com.android.support:support-annotations:22.2.0',
+            viewpagerIndicator : "com.mcxiaoke.viewpagerindicator:library:2.4.1",
+            icon               : 'com.mikepenz:iconics-core:2.5.11@aar',
+            icon_design        : 'com.mikepenz:material-design-iconic-typeface:2.2.0.1@aar',
     ]
 
     provides = [
 
-            annotation    : 'org.glassfish:javax.annotation:10.0-b28'
+            annotation: 'org.glassfish:javax.annotation:10.0-b28'
     ]
 
     apts = [
-            daggerCompiler: 'com.google.dagger:dagger-compiler:2.2',
+            daggerCompiler     : 'com.google.dagger:dagger-compiler:2.2',
             butterknifecompiler: 'com.jakewharton:butterknife-compiler:8.0.1'
     ]
 

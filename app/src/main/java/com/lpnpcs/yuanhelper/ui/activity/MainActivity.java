@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lpnpcs.yuanhelper.R;
 import com.lpnpcs.yuanhelper.base.BaseActivity;
+import com.lpnpcs.yuanhelper.ui.fragment.JokeFragment;
 import com.lpnpcs.yuanhelper.ui.fragment.WebViewFragment;
 import com.lpnpcs.yuanhelper.ui.fragment.ZhiHuFragment;
 import com.lpnpcs.yuanhelper.util.API;
@@ -157,9 +158,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         } else if (id == R.id.nav_csdn) {
             replaceFragment(new WebViewFragment(API.CSDN));
         } else if (id == R.id.nav_joke) {
-
+            replaceFragment(new JokeFragment());
         } else if (id == R.id.nav_setting) {
-
 
         }
 

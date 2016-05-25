@@ -33,7 +33,7 @@
             android:name=".ui.activity.ZhiHuDetailActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".ui.activity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar.Translucent">>
         </activity>
     </application>
 

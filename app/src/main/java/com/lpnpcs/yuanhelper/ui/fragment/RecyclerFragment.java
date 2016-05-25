@@ -9,6 +9,7 @@ import com.lpnpcs.yuanhelper.R;
 import com.lpnpcs.yuanhelper.base.BaseFragment;
 import com.lpnpcs.yuanhelper.util.Constants;
 import com.lpnpcs.yuanhelper.util.SettingUtil;
+import com.lpnpcs.yuanhelper.widget.loadview.ShapeLoadingDialog;
 
 import butterknife.BindView;
 
@@ -62,6 +63,7 @@ public abstract class RecyclerFragment extends BaseFragment implements SwipeRefr
         //noinspection ResourceAsColor
         swipeRefresh.setColorSchemeColors(R.color.colorPrimary, R.color.colorPrimaryDark, R.color.colorAccent);
         swipeRefresh.setOnRefreshListener(this);
+
     }
 
     public void showProgress(final boolean refreshState) {
