@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">猿助手</string>
+    <string name="app_name">猿知</string>
     <string name="navigation_drawer_open" translatable="false">close drawer</string>
     <string name="navigation_drawer_close" translatable="false">open drawer</string>
     <string name="share_title" translatable="false">shared_title</string>
@@ -21,4 +21,8 @@
     <string name="load_fail">加载失败。。。。</string>
     <string name="share_to">分享到</string>
     <string name="leave_app">确定要退出么</string>
+    <string name="about_me"> &#160;&#160;猿知是一个供程序员消遣和阅读资料的APP,可以在闲暇之余查看知乎新闻,
+        还可以看CSDN博客和GitHub网站,也可以看每日更新的笑话和趣图。\n  &#160;&#160;有什么问题欢迎联系作者进行讨论
+        lpnpcs@Gmail.com
+    </string>
 </resources>

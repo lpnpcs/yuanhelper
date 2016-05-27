@@ -17,12 +17,12 @@
 
     </group>
 
-    <item android:title="@string/app">
+   <!-- <item android:title="@string/app">
         <menu>
             <item
                 android:id="@+id/nav_setting"
                 android:title="@string/nav_setting"/>
         </menu>
-    </item>
+    </item>-->
 
 </menu>

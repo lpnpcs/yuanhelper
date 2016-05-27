@@ -1,7 +1,6 @@
 package com.lpnpcs.yuanhelper.ui.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -71,11 +70,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         menu.getItem(3).setIcon(
                 new IconicsDrawable(this).
                         icon(MaterialDesignIconic.Icon.gmi_mood));
-        Menu sub = menu.getItem(4).getSubMenu();
+       /* Menu sub = menu.getItem(4).getSubMenu();
         sub.getItem(0).setIcon(
                 new IconicsDrawable(this).
                         icon(MaterialDesignIconic.Icon.gmi_settings)
-                        .color(Color.DKGRAY));
+                        .color(Color.DKGRAY));*/
 
     }
 
@@ -138,7 +137,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         int id = item.getItemId();
 
         if (id == R.id.action_about) {
-            //    startActivity(new Intent(this, AboutActivity.class));
+            startActivity(new Intent(this, AboutActivity.class));
             return true;
         } else if (id == R.id.action_exit) {
             android.os.Process.killProcess(android.os.Process.myPid());
@@ -159,8 +158,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             replaceFragment(new WebViewFragment(API.CSDN));
         } else if (id == R.id.nav_joke) {
             replaceFragment(new JokeFragment());
-        } else if (id == R.id.nav_setting) {
-
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

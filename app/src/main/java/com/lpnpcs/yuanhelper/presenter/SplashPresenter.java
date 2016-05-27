@@ -34,7 +34,7 @@ public class SplashPresenter implements SplashContract.Presenter {
             @Override
             public void onError(Throwable e) {
                 LogUtil.e("lp",e.getMessage());
-                mSplashView.setSplash(null);
+                mSplashView.setSplash("");
             }
 
             @Override

@@ -2,8 +2,6 @@ package com.lpnpcs.yuanhelper.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,7 +14,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lpnpcs.yuanhelper.R;
 import com.lpnpcs.yuanhelper.base.YuanApplication;
 import com.lpnpcs.yuanhelper.data.entity.ZhiHuEntity;
-import com.lpnpcs.yuanhelper.ui.activity.MainActivity;
 import com.lpnpcs.yuanhelper.ui.activity.ZhiHuDetailActivity;
 
 /**
@@ -46,9 +43,10 @@ public class BannerView implements Holder<ZhiHuEntity.TopStoriesBean>{
                 Intent intent = new Intent(context, ZhiHuDetailActivity.class);
                 intent.putExtra("id", entity.getId());
                 intent.putExtra("title",entity.getTitle());
-                ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((MainActivity) context,
+             /*   ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((MainActivity) context,
                         imageView, context.getString(R.string.shared_img));
-                ActivityCompat.startActivity((MainActivity) context, intent, optionsCompat.toBundle());
+                ActivityCompat.startActivity((MainActivity) context, intent, optionsCompat.toBundle());*/
+                context.startActivity(intent);
             }
         });
 

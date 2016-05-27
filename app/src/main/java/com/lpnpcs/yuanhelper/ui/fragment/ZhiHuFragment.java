@@ -3,8 +3,6 @@ package com.lpnpcs.yuanhelper.ui.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -134,10 +132,10 @@ public class ZhiHuFragment extends  RecyclerFragment  implements ZhiHuContract.V
             Intent intent = new Intent(getActivity(), ZhiHuDetailActivity.class);
             intent.putExtra("id", holder.zhihuStory.getId());
             intent.putExtra("title",holder.zhihuStory.getTitle());
-            ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
+          /*  ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
                     holder.mImage, getString(R.string.shared_img));
-            ActivityCompat.startActivity(getActivity(), intent, optionsCompat.toBundle());
-
+            ActivityCompat.startActivity(getActivity(), intent, optionsCompat.toBundle());*/
+            startActivity(intent);
             holder.mTitle.setTextColor(ZhiHuListAdapter.textGrey);
         }
     }
