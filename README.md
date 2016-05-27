@@ -9,7 +9,7 @@
 #####2.  Google官方的MVP设计方式。
 ##### 3. RxJava+Retrofit实现网络请求。
 ##### 4. Dagger2实现依赖注入。
-##### 5. ButterKnfie实现View的绑定。
+##### 5. ButterKnife实现View的绑定。
 ##### 6. Glide实现图片加载。
 ##### 7. 侧滑退出Activity。
 ##### 。。。。。。
