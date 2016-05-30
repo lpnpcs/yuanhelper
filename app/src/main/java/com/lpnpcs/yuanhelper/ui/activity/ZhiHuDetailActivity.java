@@ -1,14 +1,17 @@
 package com.lpnpcs.yuanhelper.ui.activity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -20,6 +23,7 @@ import com.lpnpcs.yuanhelper.di.component.DaggerZhiHuDetailComponent;
 import com.lpnpcs.yuanhelper.di.module.ZhiHuDetailPresenterModule;
 import com.lpnpcs.yuanhelper.presenter.Contract.ZhiHuDetailContract;
 import com.lpnpcs.yuanhelper.presenter.ZhiHuDetailPresenter;
+import com.lpnpcs.yuanhelper.util.LogUtil;
 import com.lpnpcs.yuanhelper.util.Share;
 import com.lpnpcs.yuanhelper.util.SnackUtil;
 import com.lpnpcs.yuanhelper.widget.loadview.ShapeLoadingDialog;
@@ -33,7 +37,7 @@ import butterknife.ButterKnife;
  * email:lpnpcs@gmail.com
  * description：知乎详情页面
  */
-public class ZhiHuDetailActivity  extends SwipeBackActivity implements ZhiHuDetailContract.View {
+public class ZhiHuDetailActivity extends SwipeBackActivity implements ZhiHuDetailContract.View {
     @BindView(R.id.detail_img)
     ImageView detailImg;
     @BindView(R.id.toolbar_layout)
@@ -45,7 +49,9 @@ public class ZhiHuDetailActivity  extends SwipeBackActivity implements ZhiHuDeta
     private ShapeLoadingDialog shapeLoadingDialog;
     private WebView webView;
     private ZhiHuDetailPresenter zhiHuDetailPresenter;
-    private  ZhiHuDetailEntity zhiHuDetail;
+    private ZhiHuDetailEntity zhiHuDetail;
+    private boolean first = true;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +74,25 @@ public class ZhiHuDetailActivity  extends SwipeBackActivity implements ZhiHuDeta
 
     }
 
+    protected class MyAndroidWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            webView.loadUrl(url);
+            return true;
+        }
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+            LogUtil.e("lp", "load" + url);
+            if (url.equals("x-data://baseUrl") && !first) {
+                webView.loadDataWithBaseURL("x-data://base1", html, "text/html", "UTF-8", "");
+            }
+            first = false;
+        }
+
+    }
+
     @SuppressLint("SetJavaScriptEnabled")
     private void initWebView() {
         webView = new WebView(this);
@@ -78,6 +103,7 @@ public class ZhiHuDetailActivity  extends SwipeBackActivity implements ZhiHuDeta
         settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         settings.setAppCacheEnabled(true);
         settings.setDomStorageEnabled(true);
+        webView.setWebViewClient(new MyAndroidWebViewClient());
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(final WebView view, int newProgress) {
@@ -90,7 +116,29 @@ public class ZhiHuDetailActivity  extends SwipeBackActivity implements ZhiHuDeta
                             hideProgress();
                         }
                     }, 300);
+                } else {
+                    if (!shapeLoadingDialog.getDialog().isShowing()) {
+                        showProgress();
+                    }
                 }
+            }
+
+        });
+        webView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
+                        LogUtil.e("lp",webView.getUrl());
+                        if (webView.getUrl().equals("about:blank")) {
+                           finish();
+                        } else {
+                            webView.goBack();
+                        }
+                        return true;
+                    }
+                }
+                return false;
             }
         });
     }
@@ -124,6 +172,8 @@ public class ZhiHuDetailActivity  extends SwipeBackActivity implements ZhiHuDeta
         shapeLoadingDialog.show();
     }
 
+    private String html;
+
     @Override
     public void showDetail(ZhiHuDetailEntity zhiHuDetailEntity) {
         zhiHuDetail = zhiHuDetailEntity;
@@ -133,11 +183,12 @@ public class ZhiHuDetailActivity  extends SwipeBackActivity implements ZhiHuDeta
                 .into(detailImg);
         //add css style to webView
         String css = "<link rel=\"stylesheet\" href=\"file:///android_asset/css/news.css\" type=\"text/css\">";
-        String html = "<html><head>" + css + "</head><body>" + zhiHuDetailEntity.getBody() + "</body></html>";
+        html = "<html><head>" + css + "</head><body>" + zhiHuDetailEntity.getBody() + "</body></html>";
         html = html.replace("<div class=\"img-place-holder\">", "");
-        webView.loadDataWithBaseURL("x-data://base", html, "text/html", "UTF-8", null);
+        webView.loadDataWithBaseURL("x-data://base", html, "text/html", "UTF-8", "x-data://baseUrl");
         initFAB();
     }
+
     private void initFAB() {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,9 +197,10 @@ public class ZhiHuDetailActivity  extends SwipeBackActivity implements ZhiHuDeta
             }
         });
     }
+
     @Override
     public void hideProgress() {
-       shapeLoadingDialog.dismiss();
+        shapeLoadingDialog.dismiss();
     }
 
     @Override

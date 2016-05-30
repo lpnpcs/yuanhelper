@@ -52,7 +52,9 @@ public class JokeAdapter extends RecyclerView.Adapter<JokeAdapter.ItemViewHolder
             return;
         }
         holder.mTitle.setText(jokeEntity.getTitle());
-        holder.mBody.setText(Html.fromHtml(jokeEntity.getContent()));
+        String content = jokeEntity.getContent();
+        content = content.replace("<br/><br/>","<br/>");
+        holder.mBody.setText(Html.fromHtml(content));
     }
 
     @Override

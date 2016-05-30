@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">猿知</string>
+    <string name="version">V 1.0.0</string>
     <string name="navigation_drawer_open" translatable="false">close drawer</string>
     <string name="navigation_drawer_close" translatable="false">open drawer</string>
     <string name="share_title" translatable="false">shared_title</string>

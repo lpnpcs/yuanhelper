@@ -19,7 +19,6 @@ import com.lpnpcs.yuanhelper.data.entity.ZhiHuEntity;
 import com.lpnpcs.yuanhelper.ui.BannerView;
 import com.lpnpcs.yuanhelper.ui.OnListFragmentInteract;
 import com.lpnpcs.yuanhelper.util.DateUtil;
-import com.lpnpcs.yuanhelper.util.LogUtil;
 
 import java.util.List;
 
@@ -53,8 +52,8 @@ public class ZhiHuListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         storiesBeans = zhiHuEntity.getStories();
         topStoriesBeens = zhiHuEntity.getTop_stories();
 
-        LogUtil.e("lp",storiesBeans+"");
-        LogUtil.e("lp",topStoriesBeens+"");
+     //   LogUtil.e("lp",storiesBeans+"");
+    //    LogUtil.e("lp",topStoriesBeens+"");
         notifyDataSetChanged();
         if (null != banner) {
             banner.notifyDataSetChanged();
